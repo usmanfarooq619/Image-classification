@@ -1,0 +1,63 @@
+Convolutional neural network (CNN), recently has
+become very much dominant in various practical and visionary
+tasks and majorly designed to automatically learn spatial features
+though propagation and convolving through different layers such
+as convolution layers, pooling layers, activation layers and fully
+connected layers. In this paper we present Anova framework
+based on Apache Spark through convolutional neural networks,
+images are scaled down due to the correlated features, with
+the help of activation layer we try to increase non-linearity so
+precision may increase, further try to distinguishing or classify
+by the help of SoftMax layer to get probabilities against each
+class. Our main focus is to visualize the accuracy and time by
+using inception V3 with the help of Random Forest. Aim of this
+study is to achieve some promising results over Apache Spark
+with Deep Learning.
+
+A. Data Exploration
+   We use “Image Net Classification” data set which is
+   publicly available on kaggle. The data set contains almost
+   twenty five thousand images of size 150*150 which has six
+   categories and labeled as ‘buildings’ = 0, ’forest’ = 1, ’glacier’
+   = 2, ’mountain’ = 3, ’sea’ = 4, ’street’ = 5..For training the
+   model we have used fourteen thousand images, three thousand
+   images are used for testing and seven thousand images used for
+   prediction. Data distribution in proportion is shown in figure
+  2.
+   We manually load all images into Spark with a target column.
+   After this we assigned label to each of the images manually
+   from 0-5 then labeled column merged with each of the images.
+
+   After merging data set has been repartion and splatted ran-
+   domly in to train and test set with ratio of 80 by 20 respectively.
+
+   In the end PySpark data set converted in to Pandas data frame
+   by using .toPandas().
+
+   1) CNN: We use CNN which is based on artificial neural
+      network which tries to decompose an image based upon feature
+      and predict against its class precisely.which is shown in figure
+   2)Convolution layer is used as a learn able filter and all the
+      heavy work is done by this. After this the activation layer
+      called ReLu is used to increase the non linearity and make
+      negative values equals to zero then pooling is use that take
+      larger value from a image and place it into another matrix after
+      that it discard the remaining values.soft max layer is use which
+      take the probabilities of possible classes. Activation model is
+      shown in figures respectively.  
+      
+B. Model Train
+      Pre trained model is used for Transfer Learning that is
+      Inception V3 which is created by google and Random Forest
+      combined in Spark. Then The Deep Image Featurizer remove
+      the last layer of a pre trained neural network and uses the
+      output of previous as feature for the Random Forest. With this
+      transfer learning training can converge quickly because of the
+      Random Forest.Process of feature selection and classification.
+      
+C. Evaluation
+      For Evaluation of our model performance we use multi
+      class classification evaluator. Its is used to check multi class
+      classification it does not assume that any label in a class is
+      special it just give the accuracy of the classification which is
+      made on data.
